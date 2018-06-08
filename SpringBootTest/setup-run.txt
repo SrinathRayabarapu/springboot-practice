@@ -1,3 +1,4 @@
 Steps to Run the application:
 ---------------------------------
-
+1. Go to folder --> C:\Users\srayabar\git\SpringBootTest\SpringBootTest\target
+2. Open Command prompt and execute --> java -jar SpringBootTest-0.0.1-SNAPSHOT.jar
