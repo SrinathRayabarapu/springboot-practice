@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.springboot.pojos.Topic;
-import com.springboot.repositories.ITopicRepository;
+import com.springboot.repository.ITopicRepository;
 
 @Service
 public class TopicService {
