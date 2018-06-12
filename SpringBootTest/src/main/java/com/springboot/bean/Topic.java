@@ -1,4 +1,4 @@
-package com.springboot.pojos;
+package com.springboot.bean;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

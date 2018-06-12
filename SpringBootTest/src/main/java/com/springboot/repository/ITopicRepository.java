@@ -2,7 +2,7 @@ package com.springboot.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.springboot.pojos.Topic;
+import com.springboot.bean.Topic;
 
 /**
  * CrudRepository is a common repository which contains all general methods for CRUD operations

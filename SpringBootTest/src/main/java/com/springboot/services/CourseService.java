@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.springboot.pojos.Course;
+import com.springboot.bean.Course;
 import com.springboot.repository.ICourseRepository;
 
 @Service

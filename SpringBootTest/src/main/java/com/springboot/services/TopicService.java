@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.springboot.pojos.Topic;
+import com.springboot.bean.Topic;
 import com.springboot.repository.ITopicRepository;
 
 @Service

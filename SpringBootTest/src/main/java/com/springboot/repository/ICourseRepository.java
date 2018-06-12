@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.springboot.pojos.Course;
+import com.springboot.bean.Course;
 
 public interface ICourseRepository extends CrudRepository<Course, String>{ //Course and it's Id
 	

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springboot.pojos.Course;
-import com.springboot.pojos.Topic;
+import com.springboot.bean.Course;
+import com.springboot.bean.Topic;
 import com.springboot.services.CourseService;
 
 @RestController
@@ -29,7 +29,7 @@ public class CourseController {
 	public Course getCourse(@PathVariable String topicId, @PathVariable String courseId) {
 		return this.courseService.getCourse(courseId);
 	}
-	
+		
 	@RequestMapping(method=RequestMethod.POST, value="/topics/{topicId}/courses")
 	public void addCourse(@RequestBody Course course, @PathVariable String topicId) {
 		course.setTopic(new Topic(topicId, "", ""));
