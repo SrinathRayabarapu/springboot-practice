@@ -6,6 +6,8 @@ public class TrackCoach implements Coach{
 	
 	private FortuneService fortuneService;
 	
+	private String userValue;
+	
 	//this is where dependency injection happens
 	public TrackCoach(FortuneService fortuneService) {
 		this.fortuneService = fortuneService;
@@ -19,6 +21,20 @@ public class TrackCoach implements Coach{
 	@Override
 	public void getFortune() {
 		fortuneService.getFortune();
+	}
+
+	/**
+	 * @return the userValue
+	 */
+	public String getUserValue() {
+		return userValue;
+	}
+
+	/**
+	 * @param userValue the userValue to set
+	 */
+	public void setUserValue(String userValue) {
+		this.userValue = userValue;
 	}
 
 }

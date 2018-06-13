@@ -7,17 +7,35 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<!-- declare property files here -->
+	<context:property-placeholder location="classpath:mySpringData.properties"/>
+	
 	
     <!-- Define your beans here -->
     
+    <bean id="trackCoach" class="com.springboot.bean.TrackCoach">
+ 		<constructor-arg ref="myFortuneService" />
+ 	</bean>
+ 	
+ 	<bean id="cricketCoach" class="com.springboot.bean.CricketCoach">
+ 		<!-- injecting a bean -->
+ 		<property name="fortuneService" ref="myFortuneService"></property>
+ 		<!-- injecting literal values -->
+ 		<!-- 
+ 		<property name="emailAddress" value="sunrisers@hyderbad.com"></property>
+ 		<property name="teamName" value="Sunrisers Hyderabad"></property>
+ 		 -->
+ 		 <!-- loading values from properties file -->
+ 		 <property name="emailAddress" value="${data.emailId}"></property>
+ 		<property name="teamName" value="${data.teamName}"></property>
+ 	</bean>
+ 	
+ 	
+ 	
     <!-- define the dependency -->
-    
     <bean id="myFortuneService"
     		class="com.springboot.services.HappyFortuneService">
     </bean>
     
- 	<bean id="trackCoach" class="com.springboot.bean.TrackCoach">
- 		<constructor-arg ref="myFortuneService" />
- 	</bean>
-
+    
 </beans>
