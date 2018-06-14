@@ -11,13 +11,14 @@
 	<context:property-placeholder location="classpath:mySpringData.properties"/>
 	
 	
-    <!-- Define your beans here -->
+    <!-- Define your beans here : default scope is Singleton-->
     
     <bean id="trackCoach" class="com.springboot.bean.TrackCoach">
  		<constructor-arg ref="myFortuneService" />
  	</bean>
  	
- 	<bean id="cricketCoach" class="com.springboot.bean.CricketCoach">
+ 	<!-- scope="prototype" will create new bean per request -->
+ 	<bean id="cricketCoach" class="com.springboot.bean.CricketCoach" >
  		<!-- injecting a bean -->
  		<property name="fortuneService" ref="myFortuneService"></property>
  		<!-- injecting literal values -->

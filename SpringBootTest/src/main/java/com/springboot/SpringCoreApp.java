@@ -39,6 +39,14 @@ public class SpringCoreApp {
 		
 		
 		CricketCoach cricketCoach1 = applicationContext.getBean("cricketCoach", CricketCoach.class);
+		
+		//checks whether the two objects are same or not
+		System.out.println("Two objects are same : " + (cricketCoach == cricketCoach1));
+		
+		//checks whether same objects prrint same string or not
+		System.out.println(cricketCoach.toString());
+		System.out.println(cricketCoach1.toString());
+		
 		//default scope of bean is Singleton - value set by Shubha! will be printed
 		System.out.println(cricketCoach1.getUserValue());
 		
