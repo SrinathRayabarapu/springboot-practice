@@ -36,5 +36,12 @@ public class TrackCoach implements Coach{
 	public void setUserValue(String userValue) {
 		this.userValue = userValue;
 	}
-
+	
+	private void startItUp() {
+		System.out.println("Let's start it..");
+	}
+	
+	private void loosenItUp() {
+		System.out.println("That's it, end!!");
+	}
 }
