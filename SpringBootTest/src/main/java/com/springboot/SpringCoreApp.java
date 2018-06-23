@@ -2,7 +2,7 @@ package com.springboot;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.springboot.bean.Coach;
+import com.springboot.bean.ICoach;
 import com.springboot.bean.CricketCoach;
 
 /**
@@ -18,7 +18,7 @@ public class SpringCoreApp {
 		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
 		
 		//constructor DI
-		Coach bean = applicationContext.getBean("trackCoach", Coach.class); //creating and managing Object creation - Inversion of Control		
+		ICoach bean = applicationContext.getBean("trackCoach", ICoach.class); //creating and managing Object creation - Inversion of Control		
 		//this is Inversion of Control(IOC) where Spring only manages Object 
 		bean.doWorkOut();		
 		// this is where DI comes in to picture where it injects an Object to another class constructor
@@ -49,6 +49,13 @@ public class SpringCoreApp {
 		
 		//default scope of bean is Singleton - value set by Shubha! will be printed
 		System.out.println(cricketCoach1.getUserValue());
+		
+		
+		System.out.println("Annotation based component configuration");
+		ICoach tennisCoach = applicationContext.getBean("tennisCoach", ICoach.class);
+		tennisCoach.doWorkOut();
+		tennisCoach.getFortune();
+		
 		
 		
 		

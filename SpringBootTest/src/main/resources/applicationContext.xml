@@ -7,6 +7,9 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<!-- enabling component scanning -->
+	<context:component-scan base-package="com.springboot.components"></context:component-scan>
+	
 	<!-- declare property files here -->
 	<context:property-placeholder location="classpath:mySpringData.properties"/>
 	

@@ -2,7 +2,7 @@ package com.springboot.bean;
 
 import com.springboot.services.FortuneService;
 
-public class CricketCoach implements Coach {
+public class CricketCoach implements ICoach {
 	
 	//reference name should be same as mentioned in the applicationContext.xml
 	private FortuneService fortuneService;

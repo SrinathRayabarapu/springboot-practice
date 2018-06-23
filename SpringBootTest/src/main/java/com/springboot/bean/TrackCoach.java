@@ -2,7 +2,7 @@ package com.springboot.bean;
 
 import com.springboot.services.FortuneService;
 
-public class TrackCoach implements Coach{
+public class TrackCoach implements ICoach{
 	
 	private FortuneService fortuneService;
 	
