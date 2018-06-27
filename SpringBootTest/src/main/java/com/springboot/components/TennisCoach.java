@@ -5,7 +5,6 @@ import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.springboot.bean.ICoach;
@@ -16,7 +15,7 @@ import com.springboot.services.FortuneService;
 public class TennisCoach implements ICoach{
 	
 	@Autowired
-	@Qualifier("randomService")
+	@Qualifier("randomService") //if more than one implementations are present
 	private FortuneService fortuneService;
 	
 	/*

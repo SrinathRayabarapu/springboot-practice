@@ -8,14 +8,15 @@
     http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- enabling component scanning -->
+	<!-- 
 	<context:component-scan base-package="com.springboot.components"></context:component-scan>
+	 -->
 	
 	<!-- declare property files here -->
 	<context:property-placeholder location="classpath:mySpringData.properties"/>
-	
+	 
 	
     <!-- Define your beans here : default scope is Singleton-->
-    
     <bean id="trackCoach" class="com.springboot.bean.TrackCoach" init-method="startItUp" destroy-method="loosenItUp">
  		<constructor-arg ref="myFortuneService" />
  	</bean>

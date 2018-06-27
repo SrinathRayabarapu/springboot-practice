@@ -1,10 +1,5 @@
-package com.springboot.components;
+package com.springboot.services;
 
-import org.springframework.stereotype.Component;
-
-import com.springboot.services.FortuneService;
-
-@Component
 public class RandomService implements FortuneService {
 
 	@Override
