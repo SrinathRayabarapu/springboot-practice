@@ -29,7 +29,7 @@ public class SpringCoreApp {
 			//constructor DI
 			ICoach bean = applicationContext.getBean("trackCoach", ICoach.class); //creating and managing Object creation - Inversion of Control		
 			//this is Inversion of Control(IOC) where Spring only manages Object 
-			bean.doWorkOut();		
+			bean.doWorkOut();
 			// this is where DI comes in to picture where it injects an Object to another class constructor
 			bean.getFortune();
 			
@@ -47,7 +47,7 @@ public class SpringCoreApp {
 			//checks whether the two objects are same or not
 			System.out.println("Two objects are same : " + (cricketCoach == cricketCoach1));
 			
-			//checks whether same objects prrint same string or not
+			//checks whether same objects print same string or not
 			System.out.println(cricketCoach.toString());
 			System.out.println(cricketCoach1.toString());
 			
@@ -63,7 +63,7 @@ public class SpringCoreApp {
 			
 			System.out.println("Annotation based component configuration");
 			
-			//this is with component scan
+			//this is with component scan - @Qualifier used here
 			//ICoach tennisCoach = applicationContext2.getBean("tennisCoach", ICoach.class);
 			//tennisCoach.doWorkOut();
 			//tennisCoach.getFortune();
@@ -72,9 +72,6 @@ public class SpringCoreApp {
 			ICoach swimCoach = applicationContext2.getBean("swimCoach", ICoach.class);
 			swimCoach.doWorkOut();
 			swimCoach.getFortune();
-			
-			
-			
 			
 			
 		} catch (Exception e) {
