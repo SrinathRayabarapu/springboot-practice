@@ -1,14 +1,16 @@
 package com.springboot.controllers;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/hello")
 public class HelloController {
 	
-	@RequestMapping("/hello")
+    @GetMapping(value = "/srinath")
 	public String sayHi() {
-		return "Hi..Shubha, Srinath and Shreyan!";
+        return "Hi..Srinath!, How Can I help you??";
 	}
 
 }

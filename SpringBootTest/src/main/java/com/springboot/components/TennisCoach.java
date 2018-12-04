@@ -3,20 +3,17 @@ package com.springboot.components;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.springboot.bean.ICoach;
-import com.springboot.services.FortuneService;
 
 @Component
 //@Scope("prototype") //default is singleton
 public class TennisCoach implements ICoach{
 	
-	@Autowired
-	@Qualifier("randomService") //if more than one implementations are present
-	private FortuneService fortuneService;
+    // @Autowired
+    // @Qualifier("randomService") //if more than one implementations are present
+    // private FortuneService fortuneService;
 	
 	/*
 	// constructor injection
@@ -56,6 +53,6 @@ public class TennisCoach implements ICoach{
 	
 	@Override
 	public void getFortune() {
-		this.fortuneService.getFortune();
+        // this.fortuneService.getFortune();
 	}
 }

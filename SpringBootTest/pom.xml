@@ -75,7 +75,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.springboot.App</mainClass>
+							<mainClass>com.springboot.SpringBootApp</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
