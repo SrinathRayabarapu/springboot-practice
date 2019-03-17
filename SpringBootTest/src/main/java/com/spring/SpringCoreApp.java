@@ -1,18 +1,18 @@
-package com.springboot;
+package com.spring;
 
 import java.util.Objects;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.springboot.bean.CricketCoach;
 import com.springboot.bean.ICoach;
 import com.springboot.config.SportConfig;
-import com.springboot.bean.CricketCoach;
 
 /**
- * class designed to explore spring core functionalities
+ * class to explore spring core functionalities such as mvc, ioc, templates etc.
  * 
- * @author srayabar
+ * @author Srinath.Rayabarapu
  *
  */
 public class SpringCoreApp {
@@ -72,7 +72,6 @@ public class SpringCoreApp {
 			ICoach swimCoach = applicationContext2.getBean("swimCoach", ICoach.class);
 			swimCoach.doWorkOut();
 			swimCoach.getFortune();
-			
 			
 		} catch (Exception e) {
 			System.err.println("Exception in main() : " + e);

@@ -5,6 +5,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+/**
+ * class to explore Spring Boot capabilities.
+ * 
+ * @author Srinath.Rayabarapu
+ *
+ */
 @SpringBootApplication
 public class SpringBootApp {
 	private static final Logger LOG = LoggerFactory.getLogger("SpringBoot");

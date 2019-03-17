@@ -12,7 +12,7 @@ import com.springboot.services.SadFortuneService;
 /**
  * class to configure java based configurations and package scans
  * 
- * @author srayabar
+ * @author Srinath.Rayabarapu
  *
  */
 @Configuration
