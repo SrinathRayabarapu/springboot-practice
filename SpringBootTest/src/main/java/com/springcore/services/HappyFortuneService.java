@@ -1,4 +1,6 @@
-package com.springboot.services;
+package com.springcore.services;
+
+import com.springcore.services.FortuneService;
 
 public class HappyFortuneService implements FortuneService{
 

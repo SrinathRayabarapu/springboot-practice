@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * class to explore Spring Boot capabilities.
+ * main class to explore Spring Boot capabilities.
  * 
  * @author Srinath.Rayabarapu
  *

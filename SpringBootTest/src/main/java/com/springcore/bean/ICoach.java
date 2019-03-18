@@ -1,4 +1,4 @@
-package com.springboot.bean;
+package com.springcore.bean;
 
 public interface ICoach {
 	

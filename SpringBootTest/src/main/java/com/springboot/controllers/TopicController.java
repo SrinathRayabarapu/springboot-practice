@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.springboot.bean.Topic;
 import com.springboot.services.TopicService;
+import com.springcore.bean.Topic;
 
 @RestController
 public class TopicController {

@@ -1,6 +1,6 @@
-package com.springboot.bean;
+package com.springcore.bean;
 
-import com.springboot.services.FortuneService;
+import com.springcore.services.FortuneService;
 
 public class CricketCoach implements ICoach {
 	

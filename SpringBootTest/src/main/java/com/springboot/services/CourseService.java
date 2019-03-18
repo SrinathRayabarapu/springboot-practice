@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.springboot.bean.Course;
 import com.springboot.repository.ICourseRepository;
+import com.springcore.bean.Course;
 
 @Service
 public class CourseService {

@@ -1,13 +1,13 @@
-package com.springboot.config;
+package com.springcore.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-import com.springboot.bean.ICoach;
-import com.springboot.components.SwimCoach;
-import com.springboot.services.FortuneService;
-import com.springboot.services.SadFortuneService;
+import com.springcore.bean.ICoach;
+import com.springcore.components.SwimCoach;
+import com.springcore.services.FortuneService;
+import com.springcore.services.SadFortuneService;
 
 /**
  * class to configure java based configurations and package scans

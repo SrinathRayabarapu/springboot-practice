@@ -1,16 +1,17 @@
-package com.spring;
+package com.springcore;
 
 import java.util.Objects;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.springboot.bean.CricketCoach;
-import com.springboot.bean.ICoach;
-import com.springboot.config.SportConfig;
+import com.springcore.bean.CricketCoach;
+import com.springcore.bean.ICoach;
+import com.springcore.config.SportConfig;
 
 /**
- * class to explore spring core functionalities such as mvc, ioc, templates etc.
+ * main class to explore spring core functionalities such as mvc, ioc, templates
+ * etc.
  * 
  * @author Srinath.Rayabarapu
  *

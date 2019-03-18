@@ -1,9 +1,9 @@
-package com.springboot.components;
+package com.springcore.components;
 
 import org.springframework.beans.factory.annotation.Value;
 
-import com.springboot.bean.ICoach;
-import com.springboot.services.FortuneService;
+import com.springcore.bean.ICoach;
+import com.springcore.services.FortuneService;
 
 /**
  * java based configurations

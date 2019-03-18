@@ -1,5 +1,7 @@
 :PROJECT NOTES:
 
+-> This project has Spring Core(DI, JPA) and Boot code only
+
 Steps to Run the application:
 ---------------------------------
 1. Go to folder --> C:\Users\srayabar\git\SpringBootTest\SpringBootTest\target

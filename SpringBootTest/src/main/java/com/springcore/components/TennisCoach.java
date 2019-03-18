@@ -1,11 +1,11 @@
-package com.springboot.components;
+package com.springcore.components;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 import org.springframework.stereotype.Component;
 
-import com.springboot.bean.ICoach;
+import com.springcore.bean.ICoach;
 
 @Component
 //@Scope("prototype") //default is singleton
