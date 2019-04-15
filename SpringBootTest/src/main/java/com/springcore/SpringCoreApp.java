@@ -10,8 +10,7 @@ import com.springcore.bean.ICoach;
 import com.springcore.config.SportConfig;
 
 /**
- * main class to explore spring core functionalities such as mvc, ioc, templates
- * etc.
+ * main class to explore spring core functionalities such as mvc, ioc, templates etc.
  * 
  * @author Srinath.Rayabarapu
  *
