@@ -2,7 +2,7 @@ package com.springcore.services;
 
 import com.springcore.services.FortuneService;
 
-public class RandomService implements FortuneService {
+public class RandomFortuneService implements FortuneService {
 
 	@Override
 	public void getFortune() {

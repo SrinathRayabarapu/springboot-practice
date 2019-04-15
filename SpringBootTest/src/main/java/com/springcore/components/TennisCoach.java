@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.springcore.bean.ICoach;
 
 @Component
-//@Scope("prototype") //default is singleton
+//@Scope("prototype") //prototype is used for non singleton. Default is singleton.
 public class TennisCoach implements ICoach{
 	
     // @Autowired
@@ -38,13 +38,13 @@ public class TennisCoach implements ICoach{
 	}
 	
 	/*
-	//setter method injection : this need not to be on setter method only, in latest spring, any method with Autowired will work
-	@Autowired
-	//public void setFortuneService(FortuneService fortuneService) {
-	public void getSomeCoolFortuneService(FortuneService fortuneService) {
-		this.fortuneService = fortuneService;
-	}
-	*/
+	 * //setter method injection : this need not to be on setter method only, in
+	 * latest spring, any method with Autowired will work
+	 * 
+	 * @Autowired //public void setFortuneService(FortuneService fortuneService) {
+	 * public void getSomeCoolFortuneService(FortuneService fortuneService) {
+	 * this.fortuneService = fortuneService; }
+	 */
 
 	@Override
 	public void doWorkOut() {

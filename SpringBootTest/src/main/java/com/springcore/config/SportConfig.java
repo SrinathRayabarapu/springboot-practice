@@ -13,7 +13,6 @@ import com.springcore.services.SadFortuneService;
  * class to configure java based configurations and package scans
  * 
  * @author Srinath.Rayabarapu
- *
  */
 @Configuration
 //@ComponentScan("com.springboot.components")

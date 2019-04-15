@@ -20,8 +20,7 @@
     <bean id="trackCoach" class="com.springboot.bean.TrackCoach" init-method="startItUp" destroy-method="loosenItUp">
  		<constructor-arg ref="myFortuneService" />
  	</bean>
- 	
- 	
+ 	 
  	<!-- scope="prototype" will create new bean per request -->
  	<bean id="cricketCoach" class="com.springboot.bean.CricketCoach" >
  		<!-- injecting a bean -->
@@ -35,7 +34,6 @@
  		 <property name="emailAddress" value="${data.emailId}"></property>
  		<property name="teamName" value="${data.teamName}"></property>
  	</bean>
- 	
  	
     <!-- define the dependency -->
     <bean id="myFortuneService"
