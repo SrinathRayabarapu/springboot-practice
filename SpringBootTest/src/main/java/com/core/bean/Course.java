@@ -14,7 +14,7 @@ public class Course {
 	
 	@ManyToOne
 	private Topic topic;
-		
+
 	/**
 	 * @return the topic
 	 */
@@ -29,9 +29,6 @@ public class Course {
 		this.topic = topic;
 	}
 
-	public Course() {
-	}
-	
 	public Course(String id, String name, String description, String topicId) {
 		super();
 		this.id = id;
@@ -46,30 +43,35 @@ public class Course {
 	public String getId() {
 		return this.id;
 	}
+
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	/**
 	 * @return the name
 	 */
 	public String getName() {
 		return this.name;
 	}
+
 	/**
 	 * @param name the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	/**
 	 * @return the description
 	 */
 	public String getDescription() {
 		return this.description;
 	}
+
 	/**
 	 * @param description the description to set
 	 */
@@ -92,5 +94,5 @@ public class Course {
 		builder.append("]");
 		return builder.toString();
 	}
-	
+
 }

@@ -27,16 +27,19 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 @Entity
 @Table(name = "notes")
-@EntityListeners(AuditingEntityListener.class) // enables JPA Auditing so as to populate created/updated dates
-												// automatically
-@JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true) // since these two are auto-populated,
-																					// we ignore user input values
+//enables JPA Auditing so as to populate created/updated dates automatically
+@EntityListeners(AuditingEntityListener.class)
+//since these two are auto-populated, we ignore user input values
+@JsonIgnoreProperties(value = { "createdAt", "updatedAt" }, allowGetters = true)
 public class Note {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	/*
+	 * this is for the validation. In NoteController, we have @valid annotation.
+	 */
 	@NotBlank
 	private String title;
 

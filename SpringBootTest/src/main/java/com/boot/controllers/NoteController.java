@@ -23,7 +23,6 @@ import com.boot.repositories.NoteRepository;
  * note controller class for all rest endpoints
  * 
  * @author Srinath.Rayabarapu
- *
  */
 @RestController
 @RequestMapping("/api")
@@ -32,19 +31,33 @@ public class NoteController {
 	@Autowired
 	NoteRepository noteRepository;
 
-	// get all notes
+	/**
+	 * get all notes
+	 *
+	 * @return
+	 */
 	@GetMapping("/notes")
 	public List<Note> getAllNotes() {
 		return noteRepository.findAll();
 	}
 
-	// create a new note
-	@PostMapping("notes")
+	/**
+	 * create a new note
+	 *
+	 * @param note
+	 * @return
+	 */
+	@PostMapping("/notes")
 	public Note createNote(@Valid @RequestBody Note note) { //@valid validates the note model
 		return noteRepository.save(note);
 	}
 
-	// get a single note
+	/**
+	 * get a single note
+	 *
+	 * @param noteId
+	 * @return
+	 */
 	@GetMapping("/notes/{id}")
 	public Note getNoteById(@PathVariable(value = "id") Long noteId) {
 		Note note = noteRepository.findOne(noteId);
@@ -54,28 +67,32 @@ public class NoteController {
 		return note;
 	}
 
-	// update a note
+	/**
+	 * update a note
+	 *
+	 * @param noteId
+	 * @param noteDetails
+	 * @return
+	 */
 	@PostMapping("/notes/{id}")
 	public Note updateNote(@PathVariable(value = "id") Long noteId, @Valid @RequestBody Note noteDetails) {
 		Note note = getNoteById(noteId);
-
 		note.setTitle(noteDetails.getTitle());
 		note.setContent(noteDetails.getContent());
-
 		return noteRepository.save(note);
-
 	}
 
-	// delete a note
+	/**
+	 * delete a note
+	 *
+	 * @param noteId
+	 * @return
+	 */
 	@DeleteMapping("/notes/{id}")
 	public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Long noteId) {
-
 		Note note = getNoteById(noteId);
-
 		noteRepository.delete(note);
-
 		return ResponseEntity.ok().build();
-
 	}
 
 }
