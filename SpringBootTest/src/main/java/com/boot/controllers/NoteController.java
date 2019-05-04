@@ -1,4 +1,4 @@
-package com.boot.proj.easynote.controller;
+package com.boot.controllers;
 
 import java.util.List;
 import java.util.Objects;
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.boot.proj.easynote.exception.ResourceNotFoundException;
-import com.boot.proj.easynote.model.Note;
-import com.boot.proj.easynote.repository.NoteRepository;
+import com.boot.exceptions.ResourceNotFoundException;
+import com.boot.models.Note;
+import com.boot.repositories.NoteRepository;
 
 /**
  * note controller class for all rest endpoints

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.boot.model.Users;
-import com.boot.repository.UserJPARepisitory;
+import com.boot.models.Users;
+import com.boot.repositories.UserJPARepisitory;
 
 @RestController
 @RequestMapping("/users")

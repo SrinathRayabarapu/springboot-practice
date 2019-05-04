@@ -6,7 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * main class to explore Spring Boot capabilities.
+ * Main class in spring boot. It initializes all the components, entities etc in
+ * spring.boot package.
  * 
  * @author Srinath.Rayabarapu
  *

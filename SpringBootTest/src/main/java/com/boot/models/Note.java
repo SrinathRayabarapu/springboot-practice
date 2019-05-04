@@ -1,4 +1,4 @@
-package com.boot.proj.easynote.model;
+package com.boot.models;
 
 import java.util.Date;
 

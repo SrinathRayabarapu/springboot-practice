@@ -1,9 +1,9 @@
-package com.boot.proj.easynote.repository;
+package com.boot.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.boot.proj.easynote.model.Note;
+import com.boot.models.Note;
 
 /**
  * Repository class to access data from database.
