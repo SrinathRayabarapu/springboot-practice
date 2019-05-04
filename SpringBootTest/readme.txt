@@ -1,6 +1,11 @@
-:PROJECT NOTES:
+~:SPRINGBOOTTEST:~
 
--> This project has Spring Core(DI, JPA) and Boot code only
+Description:
+This project has below modules -
+1. Spring Core(DI, JPA) 
+2. SpringBoot
+
+Note: Spring MVC is part of SpringMVCTest project
 
 Steps to Run the application:
 ---------------------------------

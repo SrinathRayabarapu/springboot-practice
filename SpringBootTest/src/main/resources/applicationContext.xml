@@ -17,12 +17,12 @@
 	 
 	
     <!-- Define your beans here : default scope is Singleton-->
-    <bean id="trackCoach" class="com.springcore.bean.TrackCoach" init-method="startItUp" destroy-method="loosenItUp">
+    <bean id="trackCoach" class="com.core.bean.TrackCoach" init-method="startItUp" destroy-method="loosenItUp">
  		<constructor-arg ref="myFortuneService" />
  	</bean>
  	 
  	<!-- scope="prototype" will create new bean per request -->
- 	<bean id="cricketCoach" class="com.springcore.bean.CricketCoach" >
+ 	<bean id="cricketCoach" class="com.core.bean.CricketCoach" >
  		<!-- injecting a bean -->
  		<property name="fortuneService" ref="myFortuneService"></property>
  		<!-- injecting literal values -->
@@ -37,7 +37,7 @@
  	
     <!-- define the dependency -->
     <bean id="myFortuneService"
-    		class="com.springcore.services.HappyFortuneService">
+    		class="com.core.services.HappyFortuneService">
     </bean>
     
     

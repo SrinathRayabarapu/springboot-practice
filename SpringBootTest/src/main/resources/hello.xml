@@ -13,14 +13,14 @@
 		<property name="password" value="root"></property>
 	</bean>
 	
-	<bean id="employeeDAO" class="com.spring.dao.template.EmployeeDaoImpl" autowire="byName">
+	<bean id="employeeDAO" class="com.core.dao.template.EmployeeDaoImpl" autowire="byName">
 	</bean>
 	
-	<bean id="greetingService" class="com.spring.chap1.hello.GreetingServiceImpl">
+	<bean id="greetingService" class="com.core.chap1.hello.GreetingServiceImpl">
 		<property name="greeting" value="Hello Goodmorning !"></property>
 	</bean>
-	<bean id="audience" class="com.spring.springidol.Audience"></bean>
-	<bean id="audienceAdvice" class="com.spring.springidol.AudienceAdvice" autowire="byName"></bean>
+	<bean id="audience" class="com.core.springidol.Audience"></bean>
+	<bean id="audienceAdvice" class="com.core.springidol.AudienceAdvice" autowire="byName"></bean>
 	
 	<!-- Config -->	
 	<bean id="businessLogicBean" class="org.springframework.aop.framework.ProxyFactoryBean">
@@ -39,7 +39,7 @@
 	</bean>
 	
 	<!-- Class -->
-	<bean id="beanTarget" class="com.spring.aop.BusinessLogic"></bean>
+	<bean id="beanTarget" class="com.core.aop.BusinessLogic"></bean>
 	
 	<!-- Advisor -->
 	<!-- An Advisor assembles pointcuts and advise -->
@@ -66,8 +66,8 @@
 	</bean>
 	
 	<!-- Advises -->
-	<bean id="theTracingBeforeAdvise" class="com.spring.aop.TracingBeforeAdvice"></bean>
-	<bean id="theTracingAfterAdvise" class="com.spring.aop.TracingAfterAdvice"></bean>
+	<bean id="theTracingBeforeAdvise" class="com.core.aop.TracingBeforeAdvice"></bean>
+	<bean id="theTracingAfterAdvise" class="com.core.aop.TracingAfterAdvice"></bean>
 	
 	<!-- Different Configuration 
 	<bean id="afterBean" class="org.springframework.aop.framework.ProxyFactoryBean">

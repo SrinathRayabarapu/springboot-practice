@@ -6,13 +6,13 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
 	 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
 
-	<bean id="helloWorld" class="com.spring.HelloWorld">
+	<bean id="helloWorld" class="com.core.basic.HelloWorld">
 		<property name="name" value="Valtech"></property>
 	</bean>
 	<!--
 	<bean id="quizMaster" class="com.spring.SpringMaster"></bean>
 	-->
-	<bean id="strutsMaster" class="com.spring.StrutsMaster"></bean>
+	<bean id="strutsMaster" class="com.core.basic.StrutsMaster"></bean>
 	
 	<bean id="user" class="com.spring.User">
 		<constructor-arg value="001"></constructor-arg>
@@ -21,14 +21,14 @@
 		<constructor-arg value="Spring"></constructor-arg>
 	</bean>
 	
-	<bean id="quizMasterService" class="com.spring.QuizMasterService" autowire="constructor">
+	<bean id="quizMasterService" class="com.core.basic.QuizMasterService" autowire="constructor">
 		
 	</bean>
 	
-	<bean id="minstrel" class="com.spring.Minstrel"></bean>
-	<bean id="quest" class="com.spring.HolyGrailQuest"></bean>
+	<bean id="minstrel" class="com.core.basic.Minstrel"></bean>
+	<bean id="quest" class="com.core.basic.HolyGrailQuest"></bean>
 	
-	<bean id="knight" class="com.spring.KnightOfTheRoundTable">
+	<bean id="knight" class="com.core.basic.KnightOfTheRoundTable">
 		<constructor-arg value="King Arthur"></constructor-arg>
 		<property name="quest" ref="quest"></property>
 	</bean>
