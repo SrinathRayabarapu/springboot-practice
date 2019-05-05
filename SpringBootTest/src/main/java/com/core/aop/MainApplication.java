@@ -6,7 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class MainApplication {
 	
 	public static void main(String[] args) {
-		ApplicationContext context = new ClassPathXmlApplicationContext("hello.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 		IBusinessLogic businessLogic =  (IBusinessLogic)context.getBean("businessLogicBean");
 		businessLogic.foo();
 	}

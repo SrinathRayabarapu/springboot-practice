@@ -14,8 +14,7 @@
 	
 	<!-- declare property files here -->
 	<context:property-placeholder location="classpath:mySpringData.properties"/>
-	 
-	
+
     <!-- Define your beans here : default scope is Singleton-->
     <bean id="trackCoach" class="com.core.bean.TrackCoach" init-method="startItUp" destroy-method="loosenItUp">
  		<constructor-arg ref="myFortuneService" />
@@ -25,20 +24,96 @@
  	<bean id="cricketCoach" class="com.core.bean.CricketCoach" >
  		<!-- injecting a bean -->
  		<property name="fortuneService" ref="myFortuneService"></property>
- 		<!-- injecting literal values -->
- 		<!-- 
- 		<property name="emailAddress" value="sunrisers@hyderbad.com"></property>
- 		<property name="teamName" value="Sunrisers Hyderabad"></property>
- 		 -->
- 		 <!-- loading values from properties file -->
- 		 <property name="emailAddress" value="${data.emailId}"></property>
+ 		<!-- loading values from properties file -->
+		<property name="emailAddress" value="${data.emailId}"></property>
  		<property name="teamName" value="${data.teamName}"></property>
  	</bean>
  	
     <!-- define the dependency -->
-    <bean id="myFortuneService"
-    		class="com.core.services.HappyFortuneService">
+    <bean id="myFortuneService" class="com.core.services.HappyFortuneService">
     </bean>
-    
-    
+
+	<!-- Datasource Configuration -->
+	<bean id="datasource" class="org.apache.commons.dbcp.BasicDataSource"
+		  destroy-method="close">
+		<property name="driverClassName" value="org.gjt.mm.mysql.Driver"></property>
+		<property name="url" value="jdbc:mysql://localhost/efass_poc"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+
+	<bean id="employeeDAO" class="com.core.dao.template.EmployeeDaoImpl" autowire="byName">
+	</bean>
+
+	<bean id="greetingService" class="com.core.chap1.hello.GreetingServiceImpl">
+		<property name="greeting" value="Hello Goodmorning !"></property>
+	</bean>
+
+	<bean id="audience" class="com.core.springidol.Audience"></bean>
+
+	<bean id="audienceAdvice" class="com.core.springidol.AudienceAdvice" autowire="byName"></bean>
+
+	<!-- Config -->
+	<bean id="businessLogicBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<value>com.spring.aop.IBusinessLogic</value>
+		</property>
+		<property name="target">
+			<ref local="beanTarget"/>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>theTracingBeforeAdvisor</value>
+				<value>theTracingAfterAdvisor</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Class -->
+	<bean id="beanTarget" class="com.core.aop.BusinessLogic"></bean>
+
+	<!-- Advisor -->
+	<!-- An Advisor assembles pointcuts and advise -->
+	<bean id="theTracingBeforeAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref local="theTracingBeforeAdvise"/>
+		</property>
+		<property name="pattern">
+			<value>.*</value>
+		</property>
+	</bean>
+
+	<bean id="theTracingAfterAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice">
+			<ref local="theTracingAfterAdvise"/>
+		</property>
+		<property name="pattern">
+			<value>.*</value>
+		</property>
+	</bean>
+
+	<!-- Advises -->
+	<bean id="theTracingBeforeAdvise" class="com.core.aop.TracingBeforeAdvice"></bean>
+
+	<bean id="theTracingAfterAdvise" class="com.core.aop.TracingAfterAdvice"></bean>
+
+	<!-- Different Configuration
+	<bean id="afterBean" class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="proxyInterfaces">
+			<value>com.spring.aop.mba.IMtBean</value>
+		</property>
+		<property name="target">
+			<bean class="com.spring.aop.mba.MtBean"></bean>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<idref bean="nullArgumentsNotAllowedBeforeAdvice"/>
+			</list>
+		</property>
+		<property name="proxyTargetClass" value="true"></property>
+	</bean>
+
+	<bean id="nullArgumentsNotAllowedBeforeAdvice" class="com.spring.aop.mba.NullArgumentsNotAllowedBeforeAdvice"></bean>
+	-->
+
 </beans>
