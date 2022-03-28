@@ -2,10 +2,5 @@
 
 *.iml
 
-SpringBootTest/target/
-
-SpringBootTest/logs
-
-SpringBootTest/.idea/
-
-
+/target/
+/logs/
