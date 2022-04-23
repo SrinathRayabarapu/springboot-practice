@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-	<appender name="SpringBootTestLog" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="springboot-practice-log" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>logs/SpringBootTestLog.log</file>
 		<encoder>
 			<pattern>%-5level %d{MM/dd HH:mm:ss.SSS} [%thread] %logger{20} %msg%n
@@ -26,7 +26,7 @@
         </encoder>
     </appender>
 	
-	<logger name="SpringBoot" level="DEBUG" additivity="false">
+	<logger name="default" level="DEBUG" additivity="false">
 		<appender-ref ref="STDOUT" />
 	</logger>
 	

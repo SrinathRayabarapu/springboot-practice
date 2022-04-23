@@ -1,5 +1,6 @@
 package com.springboot;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,13 +11,12 @@ import org.slf4j.LoggerFactory;
  * @author Srinath.Rayabarapu
  *
  */
+@Slf4j
 public class AppTest {
-	
-	Logger LOG = LoggerFactory.getLogger("SpringBoot");
 
 	@Test
 	public void testSomething() {
-		LOG.debug("Testing testSomething() method...");
+		log.info("Testing testSomething() method...");
 	}
 
 }

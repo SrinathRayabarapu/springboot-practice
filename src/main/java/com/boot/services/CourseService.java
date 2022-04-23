@@ -21,9 +21,9 @@ public class CourseService {
 		return listCourses;
 	}
 
-	public Course getCourse(String courseId) {
-		return this.courseRepository.findOne(courseId);
-	}
+//	public Course getCourse(String courseId) {
+//		return this.courseRepository.findOne(courseId);
+//	}
 
 	public void addCourse(Course course) {
 		this.courseRepository.save(course);
@@ -33,8 +33,8 @@ public class CourseService {
 		this.courseRepository.save(course);
 	}
 
-	public void deleteCourse(String id) {
-		this.courseRepository.delete(id);
-	}
+//	public void deleteCourse(String id) {
+//		this.courseRepository.delete(id);
+//	}
 
 }

@@ -21,15 +21,15 @@ public class TopicService {
 		return listTopics;
 	}
 
-	public Topic getTopic(String topicId) {
-		/*
-		Optional<Topic> findFirst = this.list.stream().filter(t -> t.getId().equals(topicId)).findFirst();
-		if(findFirst.isPresent())
-			return findFirst.get();
-		return null;
-		*/
-		return this.topicRepository.findOne(topicId);
-	}
+//	public Topic getTopic(String topicId) {
+//		/*
+//		Optional<Topic> findFirst = this.list.stream().filter(t -> t.getId().equals(topicId)).findFirst();
+//		if(findFirst.isPresent())
+//			return findFirst.get();
+//		return null;
+//		*/
+//		return this.topicRepository.findOne(topicId);
+//	}
 
 	public void addTopic(Topic topic) {
 		this.topicRepository.save(topic);
@@ -39,9 +39,9 @@ public class TopicService {
 		this.topicRepository.save(topic);
 	}
 
-	public void deleteTopic(String id) {
-		//this.list.removeIf(t -> t.getId().equals(id));
-		this.topicRepository.delete(id);
-	}
+//	public void deleteTopic(String id) {
+//		//this.list.removeIf(t -> t.getId().equals(id));
+//		this.topicRepository.delete(id);
+//	}
 	
 }

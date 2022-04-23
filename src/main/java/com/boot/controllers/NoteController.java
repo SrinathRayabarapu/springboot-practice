@@ -58,14 +58,14 @@ public class NoteController {
 	 * @param noteId
 	 * @return
 	 */
-	@GetMapping("/notes/{id}")
-	public Note getNoteById(@PathVariable(value = "id") Long noteId) {
-		Note note = noteRepository.findOne(noteId);
-		if(Objects.isNull(note)) {
-			throw new ResourceNotFoundException("Note", "id", noteId);
-		}
-		return note;
-	}
+//	@GetMapping("/notes/{id}")
+//	public Note getNoteById(@PathVariable(value = "id") Long noteId) {
+//		Note note = noteRepository.findOne(noteId);
+//		if(Objects.isNull(note)) {
+//			throw new ResourceNotFoundException("Note", "id", noteId);
+//		}
+//		return note;
+//	}
 
 	/**
 	 * update a note
@@ -74,13 +74,13 @@ public class NoteController {
 	 * @param noteDetails
 	 * @return
 	 */
-	@PostMapping("/notes/{id}")
-	public Note updateNote(@PathVariable(value = "id") Long noteId, @Valid @RequestBody Note noteDetails) {
-		Note note = getNoteById(noteId);
-		note.setTitle(noteDetails.getTitle());
-		note.setContent(noteDetails.getContent());
-		return noteRepository.save(note);
-	}
+//	@PostMapping("/notes/{id}")
+//	public Note updateNote(@PathVariable(value = "id") Long noteId, @Valid @RequestBody Note noteDetails) {
+//		Note note = getNoteById(noteId);
+//		note.setTitle(noteDetails.getTitle());
+//		note.setContent(noteDetails.getContent());
+//		return noteRepository.save(note);
+//	}
 
 	/**
 	 * delete a note
@@ -88,11 +88,11 @@ public class NoteController {
 	 * @param noteId
 	 * @return
 	 */
-	@DeleteMapping("/notes/{id}")
-	public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Long noteId) {
-		Note note = getNoteById(noteId);
-		noteRepository.delete(note);
-		return ResponseEntity.ok().build();
-	}
+//	@DeleteMapping("/notes/{id}")
+//	public ResponseEntity<?> deleteNote(@PathVariable(value = "id") Long noteId) {
+//		Note note = getNoteById(noteId);
+//		noteRepository.delete(note);
+//		return ResponseEntity.ok().build();
+//	}
 
 }
