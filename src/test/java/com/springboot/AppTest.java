@@ -2,8 +2,6 @@ package com.springboot;
 
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * placeholder class for actual test classes
