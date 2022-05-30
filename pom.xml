@@ -4,8 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>springboot-practice</groupId>
 	<artifactId>springboot-practice</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>springboot-practice</name>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <modules>
+        <module>springboot-jpa-transactional</module>
+    </modules>
+    <name>springboot-practice</name>
 	<description>springboot-practice</description>
 
 	<parent>
