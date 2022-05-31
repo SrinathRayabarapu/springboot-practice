@@ -1,8 +1,9 @@
-package com.boot.jpa.transactional.service;
+package com.boot.jpa.transactional.controller;
 
 
 import com.boot.jpa.transactional.dto.FlightBookingAcknowledgement;
 import com.boot.jpa.transactional.dto.FlightBookingRequest;
+import com.boot.jpa.transactional.service.FlightBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,7 +14,6 @@ public class FlightBookingController {
 
     @Autowired
     private FlightBookingService service;
-
 
     @PostMapping("/bookFlightTicket")
     public FlightBookingAcknowledgement bookFlightTicket(@RequestBody FlightBookingRequest request){
