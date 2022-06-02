@@ -23,7 +23,8 @@ public class FlightBookingService {
     private PaymentInfoRepository paymentInfoRepository;
 
 
-    // @Transactional enables to treat the method as a single transaction with atomic behaviour as in ACID.
+    // TODO - practice more @Transactional annotations and their propagations
+    // @Transactional enables to treat the method as a single transaction with atomic behaviour(as in A for ACID)
     @Transactional
     public FlightBookingAcknowledgement bookFlightTicket(FlightBookingRequest request) {
 
@@ -32,6 +33,7 @@ public class FlightBookingService {
 
         PaymentInfo paymentInfo = request.getPaymentInfo();
 
+        // if this throw an exception then the transaction will be rolled back
         PaymentUtils.validateCreditLimit(paymentInfo.getAccountNo(), passengerInfo.getFare());
 
         paymentInfo.setPassengerId(passengerInfo.getPId());
