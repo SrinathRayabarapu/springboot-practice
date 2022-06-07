@@ -1,43 +1,24 @@
-package com.boot.models;
+package com.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
-public class Course {
-
+public class Topic {
+	
 	@Id
 	private String id;
 	private String name;
 	private String description;
 	
-	@ManyToOne
-	private Topic topic;
-		
-	/**
-	 * @return the topic
-	 */
-	public Topic getTopic() {
-		return this.topic;
-	}
-
-	/**
-	 * @param topic the topic to set
-	 */
-	public void setTopic(Topic topic) {
-		this.topic = topic;
-	}
-
-	public Course() {
+	public Topic() {
 	}
 	
-	public Course(String id, String name, String description, String topicId) {
+	public Topic(String id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
-		this.topic = new Topic(topicId, "", "");
 	}
 	
 	/**

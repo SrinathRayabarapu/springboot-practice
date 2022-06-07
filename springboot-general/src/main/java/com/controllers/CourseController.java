@@ -1,7 +1,8 @@
-package com.boot.controllers;
+package com.controllers;
 
-import java.util.List;
-
+import com.models.Course;
+import com.models.Topic;
+import com.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.boot.models.Course;
-import com.boot.models.Topic;
-import com.boot.services.CourseService;
+import java.util.List;
 
 @RestController
 public class CourseController {

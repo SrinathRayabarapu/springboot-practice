@@ -9,6 +9,7 @@
     <modules>
         <module>springboot-jpa-transactional</module>
 		<module>springboot-jpa-multidatasource</module>
+		<module>springboot-general</module>
 	</modules>
     <name>springboot-practice</name>
 	<description>springboot-practice</description>
@@ -104,7 +105,7 @@
 				<configuration>
 					<archive>
 						<manifest>
-							<mainClass>com.boot.SpringBootPracticeApp</mainClass>
+							<mainClass>boot.SpringBootPracticeApp</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

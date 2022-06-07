@@ -1,9 +1,8 @@
-package com.boot.repositories;
+package com.repositories;
 
+import com.models.Note;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import com.boot.models.Note;
 
 /**
  * Repository class to access data from database.

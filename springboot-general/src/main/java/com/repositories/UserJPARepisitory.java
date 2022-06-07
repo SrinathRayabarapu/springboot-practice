@@ -1,8 +1,7 @@
-package com.boot.repositories;
+package com.repositories;
 
+import com.models.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.boot.models.Users;
 
 //@Component //required to autowire
 public interface UserJPARepisitory extends JpaRepository<Users, Long> {

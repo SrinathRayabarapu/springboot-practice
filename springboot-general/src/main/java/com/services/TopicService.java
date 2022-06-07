@@ -1,13 +1,12 @@
-package com.boot.services;
+package com.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import com.models.Topic;
+import com.repositories.ITopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.boot.models.Topic;
-import com.boot.repositories.ITopicRepository;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class TopicService {

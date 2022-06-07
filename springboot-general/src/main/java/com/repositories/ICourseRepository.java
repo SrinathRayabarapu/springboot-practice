@@ -1,10 +1,9 @@
-package com.boot.repositories;
+package com.repositories;
 
-import java.util.List;
-
+import com.models.Course;
 import org.springframework.data.repository.CrudRepository;
 
-import com.boot.models.Course;
+import java.util.List;
 
 public interface ICourseRepository extends CrudRepository<Course, String>{ //Course and it's Id
 	
