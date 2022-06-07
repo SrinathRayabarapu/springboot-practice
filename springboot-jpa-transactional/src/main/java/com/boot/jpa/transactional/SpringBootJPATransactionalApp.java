@@ -12,11 +12,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Slf4j
 @SpringBootApplication
 @EnableTransactionManagement
-public class SpringBootJpaApp {
+public class SpringBootJPATransactionalApp {
 
 	public static void main(String[] args) {
-		log.info("SpringBootJpaApp.main()");
-		SpringApplication.run(SpringBootJpaApp.class, args);
+		SpringApplication.run(SpringBootJPATransactionalApp.class, args);
 	}
 	
 }
