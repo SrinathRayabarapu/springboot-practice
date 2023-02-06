@@ -1,0 +1,6 @@
+server:
+  port: 8081 #dev env
+
+env:
+  custom:
+    message: "this is dev env" # -Dspring.profiles.active=dev

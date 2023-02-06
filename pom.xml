@@ -11,7 +11,8 @@
 		<module>springboot-jpa-multidatasource</module>
 		<module>springboot-general</module>
 		<module>springboot-junit</module>
-	</modules>
+        <module>springboot-profiles</module>
+    </modules>
     <name>springboot-practice</name>
 	<description>springboot-practice</description>
 

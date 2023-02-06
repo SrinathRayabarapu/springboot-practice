@@ -1,0 +1,6 @@
+server:
+  port: 8084 #prod env
+
+env:
+  custom:
+    message: "this is prod env"

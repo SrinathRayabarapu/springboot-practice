@@ -1,0 +1,6 @@
+server:
+  port: 8080 # default
+
+env:
+  custom:
+    message: "this is default env"

@@ -10,7 +10,6 @@ This is a practice project for learning and demonstrating SpringBoot and JPA con
 2. Deploy it as an external webapp like a war
 3. Read: What servers are ideal choice for a prod env
 4. Creating multiple datasources
-5. Spring profiles for different environments
 
 ```
 

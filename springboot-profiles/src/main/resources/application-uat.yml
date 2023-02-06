@@ -1,0 +1,6 @@
+server:
+  port: 8083 # uat env
+
+env:
+  custom:
+    message: "this is uat env"

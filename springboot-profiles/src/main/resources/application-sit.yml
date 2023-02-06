@@ -1,0 +1,7 @@
+server:
+  port: 8082 #sit env
+
+
+env:
+  custom:
+    message: "this is sit env"
