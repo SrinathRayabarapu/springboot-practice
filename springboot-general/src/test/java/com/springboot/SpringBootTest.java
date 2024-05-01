@@ -10,7 +10,7 @@ import org.junit.Test;
  *
  */
 @Slf4j
-public class AppTest {
+public class SpringBootTest {
 
 	@Test
 	public void testSomething() {

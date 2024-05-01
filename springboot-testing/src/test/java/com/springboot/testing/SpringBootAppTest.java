@@ -1,12 +1,13 @@
-package com.springboot.junit;
+package com.springboot.testing;
 
-import org.junit.jupiter.api.Disabled;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@Disabled
+@Slf4j
 @SpringBootTest
-class UsersServiceSpringBootApplicationTest {
+class SpringBootAppTest {
+
     @Test
     void contextLoads() {
     }
