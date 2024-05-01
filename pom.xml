@@ -13,6 +13,7 @@
 		<module>springboot-junit</module>
         <module>springboot-profiles</module>
         <module>springboot-testing</module>
+        <module>springboot-aspect</module>
     </modules>
     <name>springboot-practice</name>
 	<description>springboot-practice</description>
