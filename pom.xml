@@ -14,7 +14,8 @@
         <module>springboot-profiles</module>
         <module>springboot-testing</module>
         <module>springboot-aspect</module>
-    </modules>
+		<module>springboot-s3proxy</module>
+	</modules>
     <name>springboot-practice</name>
 	<description>springboot-practice</description>
 
@@ -28,10 +29,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

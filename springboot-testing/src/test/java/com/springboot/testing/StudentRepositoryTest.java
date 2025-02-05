@@ -50,8 +50,6 @@ class StudentRepositoryTest {
         // then
         then(value).isNotZero();
         then(value).isEqualTo(100);
-
     }
-
 
 }
