@@ -15,7 +15,8 @@
         <module>springboot-testing</module>
         <module>springboot-aspect</module>
 		<module>springboot-s3proxy</module>
-	</modules>
+        <module>springboot-ratelimiter</module>
+    </modules>
     <name>springboot-practice</name>
 	<description>springboot-practice</description>
 
