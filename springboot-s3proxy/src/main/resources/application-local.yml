@@ -1,0 +1,13 @@
+server:
+  port: 9091 # default
+
+env:
+  custom:
+    message: "this is default env"
+
+com:
+  s3proxy:
+    storage:
+      proxy-endpoint: http://127.0.0.1:8080
+      bucket-name: local-test-bucket
+      local-file-base-directory: tmp-store

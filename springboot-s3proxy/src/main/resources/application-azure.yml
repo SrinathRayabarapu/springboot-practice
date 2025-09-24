@@ -1,0 +1,16 @@
+server:
+  port: 9091 # default
+
+env:
+  custom:
+    message: "this is default env"
+
+com:
+  s3proxy:
+    storage:
+      identity: ${STORAGE_BACKEND_IDENTITY}
+      credential: ${STORAGE_BACKEND_CREDENTIAL}
+      region: ${STORAGE_BACKEND_REGION}
+      bucket-name: ${STORAGE_BACKEND_BUCKET_NAME}
+      proxy-endpoint: ${S3PROXY_ENDPOINT}
+

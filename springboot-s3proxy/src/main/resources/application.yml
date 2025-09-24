@@ -1,6 +1,0 @@
-server:
-  port: 9091 # default
-
-env:
-  custom:
-    message: "this is default env"
