@@ -1,4 +1,4 @@
-package com.springbootratelimiter;
+package com.springbootratelimiter.bucket;
 
 import io.github.bucket4j.Bandwidth;
 import io.github.bucket4j.Bucket;
@@ -15,7 +15,7 @@ public class ObservableBucket {
 
     public ObservableBucket(long capacity, Duration refillDuration) {
         this.refillDuration = refillDuration;
-        Bandwidth limit = Bandwidth.classic(capacity, Refill.intervally(capacity, refillDuration));
+        Bandwidth limit = Bandwidth.classic(capacity, Refill.greedy(capacity, refillDuration));
         this.bucket = Bucket.builder().addLimit(limit).build();
         this.nextRefill = Instant.now().plus(refillDuration);
     }
@@ -27,6 +27,11 @@ public class ObservableBucket {
             nextRefill = Instant.now().plus(refillDuration);
         }
         return result;
+    }
+
+    // add a method to return bucket size
+    public long getAvailableTokens() {
+        return bucket.getAvailableTokens();
     }
 
 }
