@@ -274,7 +274,7 @@ spring-boot-redis-caching/
 ├── docker/docker-compose.yml
 ├── README.md
 ├── pom.xml
-└── src/main/java/com/example/caching/
+└── src/main/java/com/srinath/caching/
     ├── config/          # RedisCacheManager, JSON serializers, properties
     ├── domain/
     ├── repository/
