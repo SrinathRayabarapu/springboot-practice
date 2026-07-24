@@ -16,6 +16,7 @@
         <module>springboot-aspect</module>
 		<module>springboot-s3proxy</module>
         <module>springboot-ratelimiter</module>
+        <module>spring-boot-redis-caching</module>
     </modules>
     <name>springboot-practice</name>
 	<description>springboot-practice</description>
