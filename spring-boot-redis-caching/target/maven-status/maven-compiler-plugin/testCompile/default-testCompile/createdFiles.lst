@@ -1,4 +1,0 @@
-com/example/caching/patterns/cacheaside/CacheAsideProductServiceTest.class
-com/example/caching/patterns/stampede/CacheStampedeProtectionServiceTest.class
-com/example/caching/patterns/writethrough/WriteThroughProductServiceTest.class
-com/example/caching/patterns/writebehind/WriteBehindProductServiceTest.class

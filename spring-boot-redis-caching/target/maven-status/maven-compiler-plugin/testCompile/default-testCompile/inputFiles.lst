@@ -1,4 +1,0 @@
-/Users/srinathrayabarapu/IdeaProjects/springboot-practice/spring-boot-redis-caching/src/test/java/com/example/caching/patterns/writethrough/WriteThroughProductServiceTest.java
-/Users/srinathrayabarapu/IdeaProjects/springboot-practice/spring-boot-redis-caching/src/test/java/com/example/caching/patterns/cacheaside/CacheAsideProductServiceTest.java
-/Users/srinathrayabarapu/IdeaProjects/springboot-practice/spring-boot-redis-caching/src/test/java/com/example/caching/patterns/stampede/CacheStampedeProtectionServiceTest.java
-/Users/srinathrayabarapu/IdeaProjects/springboot-practice/spring-boot-redis-caching/src/test/java/com/example/caching/patterns/writebehind/WriteBehindProductServiceTest.java
