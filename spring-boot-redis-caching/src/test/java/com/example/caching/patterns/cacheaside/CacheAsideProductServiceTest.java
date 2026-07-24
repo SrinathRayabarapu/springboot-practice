@@ -1,6 +1,5 @@
 package com.example.caching.patterns.cacheaside;
 
-import com.example.caching.config.CachingProperties;
 import com.example.caching.domain.Product;
 import com.example.caching.domain.ProductRequest;
 import com.example.caching.service.ProductPersistenceService;
@@ -9,17 +8,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.ValueOperations;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
-import static org.mockito.Mockito.lenient;
-import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -28,53 +20,39 @@ class CacheAsideProductServiceTest {
 
     @Mock
     private ProductPersistenceService persistenceService;
-    @Mock
-    private RedisTemplate<String, Object> redisTemplate;
-    @Mock
-    private ValueOperations<String, Object> valueOperations;
 
     private CacheAsideProductService service;
 
     @BeforeEach
     void setUp() {
-        CachingProperties properties = new CachingProperties();
-        properties.getProduct().setTtlSeconds(60);
-        lenient().when(redisTemplate.opsForValue()).thenReturn(valueOperations);
-        service = new CacheAsideProductService(persistenceService, redisTemplate, properties);
+        service = new CacheAsideProductService(persistenceService);
     }
 
     @Test
-    void getByIdReturnsCachedValueWithoutHittingDatabase() {
-        Product cached = product(1L);
-        when(valueOperations.get("products:aside:1")).thenReturn(cached);
+    void getByIdDelegatesToDatabaseOnCacheMissPath() {
+        Product product = product(1L);
+        when(persistenceService.findById(1L)).thenReturn(product);
 
         Product result = service.getById(1L);
 
-        assertThat(result).isSameAs(cached);
-        verify(persistenceService, never()).findById(any());
-    }
-
-    @Test
-    void getByIdLoadsFromDatabaseAndPopulatesCacheOnMiss() {
-        Product product = product(2L);
-        when(valueOperations.get("products:aside:2")).thenReturn(null);
-        when(persistenceService.findById(2L)).thenReturn(product);
-
-        Product result = service.getById(2L);
-
         assertThat(result).isEqualTo(product);
-        verify(valueOperations).set(eq("products:aside:2"), eq(product), eq(Duration.ofSeconds(60)));
+        verify(persistenceService).findById(1L);
     }
 
     @Test
-    void updateInvalidatesCache() {
+    void createPersistsAndReturnsProductForCachePut() {
         ProductRequest request = request();
-        Product updated = product(3L);
-        when(persistenceService.update(3L, request)).thenReturn(updated);
+        Product saved = product(2L);
+        when(persistenceService.create(request)).thenReturn(saved);
 
-        service.update(3L, request);
+        assertThat(service.create(request)).isEqualTo(saved);
+        verify(persistenceService).create(request);
+    }
 
-        verify(redisTemplate).delete("products:aside:3");
+    @Test
+    void deleteEvictsViaPersistenceDelete() {
+        service.delete(3L);
+        verify(persistenceService).deleteById(3L);
     }
 
     private static Product product(Long id) {
@@ -85,8 +63,8 @@ class CacheAsideProductServiceTest {
 
     private static ProductRequest request() {
         ProductRequest request = new ProductRequest();
-        request.setSku("SKU-3");
-        request.setName("Updated");
+        request.setSku("SKU-2");
+        request.setName("Catalog Item");
         request.setPrice(BigDecimal.ONE);
         request.setStock(1);
         return request;

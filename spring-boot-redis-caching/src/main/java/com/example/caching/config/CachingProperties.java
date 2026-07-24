@@ -47,8 +47,17 @@ public class CachingProperties {
     }
 
     public static class WriteBehind {
+        private String queueKey = "analytics:page-views";
         private long flushDelayMs = 2000;
         private int batchSize = 50;
+
+        public String getQueueKey() {
+            return queueKey;
+        }
+
+        public void setQueueKey(String queueKey) {
+            this.queueKey = queueKey;
+        }
 
         public long getFlushDelayMs() {
             return flushDelayMs;

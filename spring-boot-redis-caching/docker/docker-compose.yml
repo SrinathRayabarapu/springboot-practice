@@ -2,10 +2,10 @@ version: "3.8"
 
 services:
   redis:
-    image: redis:7.0
+    image: redis:7.0-alpine
     container_name: spring-boot-redis-caching
     ports:
-      - "${REDIS_HOST_PORT:-6379}:6379"
+      - "6379:6379"
     command: ["redis-server", "--appendonly", "yes"]
     volumes:
       - redis-data:/data
@@ -14,6 +14,17 @@ services:
       interval: 5s
       timeout: 3s
       retries: 10
+
+  redis-commander:
+    image: rediscommander/redis-commander:latest
+    container_name: spring-boot-redis-commander
+    ports:
+      - "8081:8081"
+    environment:
+      REDIS_HOSTS: local:redis:6379
+    depends_on:
+      redis:
+        condition: service_healthy
 
 volumes:
   redis-data:

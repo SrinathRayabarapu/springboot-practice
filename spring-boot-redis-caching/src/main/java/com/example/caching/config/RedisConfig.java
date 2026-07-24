@@ -4,12 +4,12 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.impl.LaissezFaireSubTypeValidator;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
@@ -20,8 +20,8 @@ import java.time.Duration;
 
 @Configuration
 @EnableCaching
-@EnableConfigurationProperties({CachingProperties.class, RedissonProperties.class})
-public class RedisCacheConfig {
+@EnableConfigurationProperties(CachingProperties.class)
+public class RedisConfig {
 
     public static final String PRODUCT_CACHE = "products";
 
@@ -67,9 +67,12 @@ public class RedisCacheConfig {
     }
 
     @Bean
-    public RedisCacheManagerBuilderCustomizer redisCacheManagerBuilderCustomizer(RedisCacheConfiguration cacheConfiguration) {
-        return builder -> builder
+    public RedisCacheManager cacheManager(RedisConnectionFactory connectionFactory,
+                                          RedisCacheConfiguration cacheConfiguration) {
+        return RedisCacheManager.builder(connectionFactory)
+                .cacheDefaults(cacheConfiguration)
                 .withCacheConfiguration(PRODUCT_CACHE, cacheConfiguration)
-                .cacheDefaults(cacheConfiguration);
+                .transactionAware()
+                .build();
     }
 }

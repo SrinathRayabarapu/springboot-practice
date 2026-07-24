@@ -1,38 +1,36 @@
+# Cloud-ready profile. Bind standard Spring env vars so ElastiCache / Azure Redis / RDS
+# can be swapped in without code changes, e.g.:
+#   SPRING_DATASOURCE_URL, SPRING_DATASOURCE_USERNAME, SPRING_DATASOURCE_PASSWORD
+#   SPRING_REDIS_HOST, SPRING_REDIS_PORT, SPRING_REDIS_PASSWORD
 spring:
   datasource:
-    url: ${DB_URL}
-    driver-class-name: ${DB_DRIVER:org.postgresql.Driver}
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
+    url: ${SPRING_DATASOURCE_URL}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME:org.postgresql.Driver}
     hikari:
-      maximum-pool-size: ${DB_POOL_MAX_SIZE:20}
-      minimum-idle: ${DB_POOL_MIN_IDLE:5}
+      maximum-pool-size: ${SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE:20}
+      minimum-idle: ${SPRING_DATASOURCE_HIKARI_MINIMUM_IDLE:5}
   jpa:
     hibernate:
-      ddl-auto: ${JPA_DDL_AUTO:validate}
-    show-sql: ${JPA_SHOW_SQL:false}
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:validate}
+    show-sql: false
     properties:
       hibernate:
-        dialect: ${JPA_DIALECT:org.hibernate.dialect.PostgreSQLDialect}
+        dialect: ${SPRING_JPA_DATABASE_PLATFORM:org.hibernate.dialect.PostgreSQLDialect}
         jdbc:
           time_zone: UTC
   redis:
-    host: ${REDIS_HOST}
-    port: ${REDIS_PORT:6379}
-    password: ${REDIS_PASSWORD}
-    ssl: ${REDIS_SSL:false}
-    timeout: ${REDIS_TIMEOUT:2000ms}
+    host: ${SPRING_REDIS_HOST}
+    port: ${SPRING_REDIS_PORT:6379}
+    password: ${SPRING_REDIS_PASSWORD:}
+    ssl: ${SPRING_REDIS_SSL:false}
+    timeout: ${SPRING_REDIS_TIMEOUT:2000ms}
     lettuce:
       pool:
-        max-active: ${REDIS_POOL_MAX_ACTIVE:32}
-        max-idle: ${REDIS_POOL_MAX_IDLE:16}
-        min-idle: ${REDIS_POOL_MIN_IDLE:8}
-
-redisson:
-  address: ${REDISSON_ADDRESS:}
-  password: ${REDIS_PASSWORD:}
-  connection-pool-size: ${REDISSON_CONNECTION_POOL_SIZE:64}
-  connection-minimum-idle-size: ${REDISSON_CONNECTION_MINIMUM_IDLE_SIZE:24}
+        max-active: ${SPRING_REDIS_LETTUCE_POOL_MAX_ACTIVE:32}
+        max-idle: ${SPRING_REDIS_LETTUCE_POOL_MAX_IDLE:16}
+        min-idle: ${SPRING_REDIS_LETTUCE_POOL_MIN_IDLE:8}
 
 caching:
   product:

@@ -1,7 +1,6 @@
 package com.example.caching.patterns.stampede;
 
 import com.example.caching.config.CachingProperties;
-import com.example.caching.config.RedisCacheConfig;
 import com.example.caching.domain.Product;
 import com.example.caching.service.ProductPersistenceService;
 import org.redisson.api.RLock;
@@ -18,13 +17,15 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Cache stampede / thundering-herd protection: on miss, only one caller loads from DB under a Redisson lock;
- * others wait briefly then re-read the cache.
+ * Cache stampede / thundering-herd prevention for high-concurrency flash-sale item access.
+ * On miss, a Redisson {@link RLock} ensures only one thread loads from the DB and populates Redis;
+ * concurrent callers wait on the lock and then serve from the warm cache.
  */
 @Service
-public class CacheStampedeProtectionService {
+public class FlashSaleStampedeService {
 
-    private static final Logger log = LoggerFactory.getLogger(CacheStampedeProtectionService.class);
+    private static final Logger log = LoggerFactory.getLogger(FlashSaleStampedeService.class);
+    static final String FLASH_SALE_KEY_PREFIX = "products:flash-sale:";
 
     private final ProductPersistenceService persistenceService;
     private final RedisTemplate<String, Object> redisTemplate;
@@ -32,25 +33,24 @@ public class CacheStampedeProtectionService {
     private final CachingProperties cachingProperties;
     private final AtomicInteger dbLoadCount = new AtomicInteger();
 
-    public CacheStampedeProtectionService(ProductPersistenceService persistenceService,
-                                          RedisTemplate<String, Object> redisTemplate,
-                                          RedissonClient redissonClient,
-                                          CachingProperties cachingProperties) {
+    public FlashSaleStampedeService(ProductPersistenceService persistenceService,
+                                    RedisTemplate<String, Object> redisTemplate,
+                                    RedissonClient redissonClient,
+                                    CachingProperties cachingProperties) {
         this.persistenceService = persistenceService;
         this.redisTemplate = redisTemplate;
         this.redissonClient = redissonClient;
         this.cachingProperties = cachingProperties;
     }
 
-    public Product getById(Long id) {
+    public Product getFlashSaleItem(Long id) {
         String key = cacheKey(id);
         Product cached = (Product) redisTemplate.opsForValue().get(key);
         if (cached != null) {
             return cached;
         }
 
-        String lockKey = "lock:product:stampede:" + id;
-        RLock lock = redissonClient.getLock(lockKey);
+        RLock lock = redissonClient.getLock("lock:flash-sale:product:" + id);
         boolean acquired = false;
         try {
             acquired = lock.tryLock(
@@ -59,25 +59,27 @@ public class CacheStampedeProtectionService {
                     TimeUnit.SECONDS
             );
 
+            // Double-check: winner may have populated the cache while we waited for the lock.
             cached = (Product) redisTemplate.opsForValue().get(key);
             if (cached != null) {
-                log.debug("Stampede protection: cache populated while waiting for product {}", id);
+                log.debug("Flash-sale stampede: cache populated while waiting for product {}", id);
                 return cached;
             }
 
             if (!acquired) {
                 throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE,
-                        "Unable to acquire stampede lock for product " + id);
+                        "Flash-sale item temporarily unavailable (lock contention) for product " + id);
             }
 
-            log.debug("Stampede protection: loading product {} from database", id);
+            log.debug("Flash-sale stampede: loading product {} from database", id);
             Product product = persistenceService.findById(id);
             dbLoadCount.incrementAndGet();
             redisTemplate.opsForValue().set(key, product, ttl());
             return product;
         } catch (InterruptedException ex) {
             Thread.currentThread().interrupt();
-            throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "Interrupted while waiting for cache lock", ex);
+            throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE,
+                    "Interrupted while waiting for flash-sale cache lock", ex);
         } finally {
             if (acquired && lock.isHeldByCurrentThread()) {
                 lock.unlock();
@@ -102,6 +104,6 @@ public class CacheStampedeProtectionService {
     }
 
     static String cacheKey(Long id) {
-        return RedisCacheConfig.PRODUCT_CACHE + ":stampede:" + id;
+        return FLASH_SALE_KEY_PREFIX + id;
     }
 }

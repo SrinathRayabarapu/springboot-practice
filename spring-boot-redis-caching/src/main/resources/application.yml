@@ -18,14 +18,9 @@ caching:
     stampede-lock-wait-seconds: ${CACHE_STAMPEDE_LOCK_WAIT_SECONDS:3}
     stampede-lock-lease-seconds: ${CACHE_STAMPEDE_LOCK_LEASE_SECONDS:10}
   write-behind:
+    queue-key: ${CACHE_WRITE_BEHIND_QUEUE_KEY:analytics:page-views}
     flush-delay-ms: ${CACHE_WRITE_BEHIND_FLUSH_DELAY_MS:2000}
     batch-size: ${CACHE_WRITE_BEHIND_BATCH_SIZE:50}
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info
 
 logging:
   level:

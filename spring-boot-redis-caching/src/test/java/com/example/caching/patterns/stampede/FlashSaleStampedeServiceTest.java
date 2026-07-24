@@ -19,13 +19,12 @@ import java.util.concurrent.TimeUnit;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class CacheStampedeProtectionServiceTest {
+class FlashSaleStampedeServiceTest {
 
     @Mock
     private ProductPersistenceService persistenceService;
@@ -38,7 +37,7 @@ class CacheStampedeProtectionServiceTest {
     @Mock
     private RLock lock;
 
-    private CacheStampedeProtectionService service;
+    private FlashSaleStampedeService service;
 
     @BeforeEach
     void setUp() {
@@ -47,21 +46,21 @@ class CacheStampedeProtectionServiceTest {
         properties.getProduct().setStampedeLockWaitSeconds(1);
         properties.getProduct().setStampedeLockLeaseSeconds(5);
         when(redisTemplate.opsForValue()).thenReturn(valueOperations);
-        service = new CacheStampedeProtectionService(persistenceService, redisTemplate, redissonClient, properties);
+        service = new FlashSaleStampedeService(persistenceService, redisTemplate, redissonClient, properties);
     }
 
     @Test
-    void getByIdUsesLockAndLoadsDatabaseOnceOnMiss() throws Exception {
-        Product product = new Product("SKU-1", "Stampede", BigDecimal.TEN, 1);
+    void getFlashSaleItemUsesLockAndLoadsDatabaseOnceOnMiss() throws Exception {
+        Product product = new Product("SKU-1", "Flash Sale", BigDecimal.TEN, 1);
         product.setId(1L);
 
-        when(valueOperations.get("products:stampede:1")).thenReturn(null, null);
-        when(redissonClient.getLock("lock:product:stampede:1")).thenReturn(lock);
+        when(valueOperations.get("products:flash-sale:1")).thenReturn(null, null);
+        when(redissonClient.getLock("lock:flash-sale:product:1")).thenReturn(lock);
         when(lock.tryLock(1L, 5L, TimeUnit.SECONDS)).thenReturn(true);
         when(lock.isHeldByCurrentThread()).thenReturn(true);
         when(persistenceService.findById(1L)).thenReturn(product);
 
-        Product result = service.getById(1L);
+        Product result = service.getFlashSaleItem(1L);
 
         assertThat(result).isEqualTo(product);
         assertThat(service.getDbLoadCount()).isEqualTo(1);
@@ -70,12 +69,12 @@ class CacheStampedeProtectionServiceTest {
     }
 
     @Test
-    void getByIdSkipsDatabaseWhenCacheIsWarm() {
-        Product cached = new Product("SKU-2", "Cached", BigDecimal.ONE, 2);
+    void getFlashSaleItemSkipsDatabaseWhenCacheIsWarm() {
+        Product cached = new Product("SKU-2", "Cached Deal", BigDecimal.ONE, 2);
         cached.setId(2L);
-        when(valueOperations.get("products:stampede:2")).thenReturn(cached);
+        when(valueOperations.get("products:flash-sale:2")).thenReturn(cached);
 
-        Product result = service.getById(2L);
+        Product result = service.getFlashSaleItem(2L);
 
         assertThat(result).isSameAs(cached);
         verify(redissonClient, times(0)).getLock(anyString());
