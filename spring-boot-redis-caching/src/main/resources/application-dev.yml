@@ -28,4 +28,4 @@ spring:
 
 logging:
   level:
-    com.example.caching: DEBUG
+    com.srinath.caching: DEBUG

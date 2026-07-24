@@ -38,5 +38,5 @@ caching:
 
 logging:
   level:
-    com.example.caching: INFO
+    com.srinath.caching: INFO
     root: WARN
